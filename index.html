@@ -1,179 +1,334 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi sitio web con TailwindCSS</title>
+
+    <!-- SEO Meta Tags -->
+    <title>Super Mario 3D World + Bowser's Fury - ¡Aventura felina disponible ahora!</title>
+    <meta name="description" content="¡Vive una aventura paws-itivamente adorable! Únete a Mario y sus amigos en Super Mario 3D World + Bowser's Fury. Disponible ahora para Nintendo Switch.">
+    <meta name="keywords" content="Super Mario, Mario Bros, Nintendo Switch, Bowser's Fury, juego de plataformas, Mario 3D World">
+    <meta name="author" content="Nintendo">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Super Mario 3D World + Bowser's Fury">
+    <meta property="og:description" content="¡Vive una aventura paws-itivamente adorable! Únete a Mario y sus amigos en una nueva aventura felina.">
+    <meta property="og:image" content="img/hero.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Super Mario 3D World + Bowser's Fury">
+    <meta name="twitter:description" content="¡Vive una aventura paws-itivamente adorable!">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+
+    <!-- Preload critical assets -->
+    <link rel="preload" href="css/main.css" as="style">
+    <link rel="preload" href="img/hero.jpg" as="image">
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="css/main.css">
+
+    <!-- Performance optimization -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
 </head>
 <body>
     <div class="w-[1920px] xsm:w-full mx-auto">
-        <nav class="bg-gray-800 flex justify-between lg:justify-start items-center">
+        <!-- Skip to main content for accessibility -->
+        <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:bg-red-500 focus:text-white focus:p-4">Saltar al contenido principal</a>
+
+        <nav class="bg-gray-800 flex justify-between lg:justify-start items-center sticky top-0 z-40 shadow-lg" role="navigation" aria-label="Navegación principal">
             <div class="logo p-2 w-1/6">
-                <img src="img/logo.png" width="100" alt="">
-            </div>  
+                <a href="#" aria-label="Inicio - Super Mario 3D World">
+                    <img src="img/logo.png" width="100" alt="Logo de Super Mario" class="transition-transform hover:scale-110 duration-300">
+                </a>
+            </div>
             <div class="links lg:block hidden w-1/6 md:w-4/6">
                 <ul class="menu flex items-center justify-center gap-5">
-                    <li><a href="#" class="link">Home</a></li>
-                    <li><a href="#" class="link">Play Together</a></li>
-                    <li><a href="#" class="link">Explore</a></li>
-                    <li><a href="#" class="border-4 border-yellow-400 text-white font-bold p-2 rounded-full hover:bg-white hover:text-black transition duration-500">Bowser Fury</a></li>
-                    <li><a href="#" class="rounded-full bg-red-500 text-white font-bold px-4 py-3 hover:text-black hover:bg-white transition duration-500">Buy Now</a></li>
+                    <li><a href="#home" class="link" aria-label="Ir al inicio">Home</a></li>
+                    <li><a href="#play-together" class="link" aria-label="Ver modo multijugador">Play Together</a></li>
+                    <li><a href="#explore" class="link" aria-label="Explorar el juego">Explore</a></li>
+                    <li><a href="#bowser-fury" class="border-4 border-yellow-400 text-white font-bold p-2 rounded-full hover:bg-white hover:text-black transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-yellow-400/50" aria-label="Descubre Bowser's Fury">Bowser's Fury</a></li>
+                    <li><a href="#buy" class="rounded-full bg-red-500 text-white font-bold px-4 py-3 hover:text-black hover:bg-white transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-red-500/50" aria-label="Comprar ahora">Buy Now</a></li>
                 </ul>
-            </div> 
+            </div>
 
-            <div class="block lg:hidden w-1/6 lg:w-4/6">
-                <a href="#" class="link" id="mobile-menu">Menu</a>
-                <ul class="mobile-links hidden w-full absolute z-50 left-0 text-center bg-gray-800">
-                    <li><a href="#" class="link">Home</a></li>
-                    <li><a href="#" class="link">Play Together</a></li>
-                    <li><a href="#" class="link">Explore</a></li>
-                    <li><a href="#" class="my-4 inline-block border-4 border-yellow-400 text-white font-bold p-2 rounded-full hover:bg-white hover:text-black transition duration-500">Bowser Fury</a></li>
-                    <li><a href="#" class="my-4 inline-block rounded-full bg-red-500 text-white font-bold px-4 py-3 hover:text-black hover:bg-white transition duration-500">Buy Now</a></li>
+            <div class="block lg:hidden w-1/6 lg:w-4/6 text-right pr-4">
+                <button class="link focus:outline-none focus:ring-2 focus:ring-red-500 rounded px-3 py-1" id="mobile-menu" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-navigation">
+                    <span class="block">Menu</span>
+                </button>
+                <ul class="mobile-links hidden w-full absolute z-50 left-0 text-center bg-gray-800 transition-all duration-300 shadow-xl" id="mobile-navigation" role="menu">
+                    <li role="none"><a href="#home" class="link block py-3" role="menuitem">Home</a></li>
+                    <li role="none"><a href="#play-together" class="link block py-3" role="menuitem">Play Together</a></li>
+                    <li role="none"><a href="#explore" class="link block py-3" role="menuitem">Explore</a></li>
+                    <li role="none"><a href="#bowser-fury" class="my-4 inline-block border-4 border-yellow-400 text-white font-bold p-2 rounded-full hover:bg-white hover:text-black transition duration-500" role="menuitem">Bowser's Fury</a></li>
+                    <li role="none"><a href="#buy" class="my-4 inline-block rounded-full bg-red-500 text-white font-bold px-4 py-3 hover:text-black hover:bg-white transition duration-500" role="menuitem">Buy Now</a></li>
                 </ul>
-            </div> 
+            </div>
         </nav>
 
-        <section class="header">
-            <img src="img/hero.jpg" alt="">
-        </section>
-        <section>
-            <div class="bg-wave-pattern h-6 bg-repeat-x relative -top-2"></div>
+        <header class="header relative" id="home">
+            <img src="img/hero.jpg" alt="Mario, Luigi, Peach y Toad en una aventura colorida con power-ups de gato" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 pointer-events-none"></div>
+        </header>
+
+        <section class="cta-section" id="main-content" aria-label="Llamadas a la acción">
+            <div class="bg-wave-pattern h-6 bg-repeat-x relative -top-2" aria-hidden="true"></div>
             <div class="bg-wave-pattern-dots text-center p-4 flex md:flex-row flex-col gap-3 justify-center">
-                <a href="#" class="inline-block py-3 px-16 bg-black text-white font-bold border-transparent border-8 text-2xl rounded-3xl hover:border-gray-200 hover:bg-white hover:text-black transition duration-200">Buy Now</a>
-                <a href="#" class="inline-block py-3 px-16 bg-red-500 text-white font-bold border-transparent border-8 text-2xl rounded-3xl hover:border-gray-200 hover:bg-white hover:text-black transition duration-200">Watch the Trailer</a>
+                <a href="#buy" class="inline-block py-3 px-16 bg-black text-white font-bold border-transparent border-8 text-2xl rounded-3xl hover:border-gray-200 hover:bg-white hover:text-black transition-all duration-200 hover:scale-105 hover:shadow-2xl transform" aria-label="Comprar el juego ahora">Buy Now</a>
+                <a href="#trailer" class="inline-block py-3 px-16 bg-red-500 text-white font-bold border-transparent border-8 text-2xl rounded-3xl hover:border-gray-200 hover:bg-white hover:text-black transition-all duration-200 hover:scale-105 hover:shadow-2xl transform" aria-label="Ver el tráiler del juego">Watch the Trailer</a>
             </div>
-            <div class="bg-wave-pattern bg-repeat-x h-6 relative top-2"></div>
+            <div class="bg-wave-pattern bg-repeat-x h-6 relative top-2" aria-hidden="true"></div>
         </section>
-        <section class="bg-pattern-characters-red py-28">
+        <section class="bg-pattern-characters-red py-28" id="play-together" aria-labelledby="features-title">
             <div class="lg:container 2xl:w-3/5 mx-auto md:flex gap-5 md:w-full p-3">
                 <div class="left bg-character-mario bg-no-repeat bg-contain bg-top w-5/6 md:w-1/2 pt-52 mx-auto">
-
-                    <div class="card text-center bg-white 2xl:w-5/6 mx-auto mt-72 rounded-2xl overflow-hidden xl:w-4/5">
-                        <div class="cover bg-black">
-                            <video src="videos/video01.mp4" autoplay loop muted></video>
+                    <article class="card text-center bg-white 2xl:w-5/6 mx-auto mt-72 rounded-2xl overflow-hidden xl:w-4/5 shadow-2xl hover:shadow-red-500/30 transition-all duration-300 hover:scale-105 transform">
+                        <div class="cover bg-black relative overflow-hidden group">
+                            <video src="videos/video01.mp4" autoplay loop muted playsinline loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" aria-label="Video de modo multijugador"></video>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
-                        <div class="content bg-wave-pattern bg-repeat-x relative -top-3">
-                            <h3 class="font-black text-4xl py-10">Play Together</h3>
-                            <p class="text-xl mx-6">
-                                Work with (our against) your friends and family*
+                        <div class="content bg-wave-pattern bg-repeat-x relative -top-3" aria-hidden="true">
+                            <h3 class="font-black text-4xl py-10 text-gray-800">Play Together</h3>
+                            <p class="text-xl mx-6 mb-4 text-gray-700">
+                                ¡Trabaja con (o contra) tus amigos y familia!*
                             </p>
-                            <a href="#" class="arrow group">
+                            <a href="#trailer" class="arrow group inline-flex items-center gap-2 text-red-500 font-bold hover:text-red-700 transition-colors pb-6" aria-label="Ver tráiler del modo multijugador">
                                 Watch the trailer
-                                <span class="arrow-group"></span>
+                                <span class="arrow-group inline-block transition-transform group-hover:translate-x-2">→</span>
                             </a>
                         </div>
-                        <div class="dots flex justify-between p-4">
-                            <div class="dot"></div>
-                            <div class="dot"></div>
+                        <div class="dots flex justify-center gap-2 p-4" role="presentation" aria-hidden="true">
+                            <div class="dot w-3 h-3 bg-blue-500 rounded-full"></div>
+                            <div class="dot w-3 h-3 bg-gray-300 rounded-full"></div>
                         </div>
-                    </div>
+                    </article>
                 </div>
-                <div class="right w-5/6 md:w-1/2 text-center mx-auto">
-                    <h2 class="font-black text-white text-6xl py-8">
-                        Available Now</h2>
-                    <p class="font-bold text-white text-2xl mx-auto py-10 w-4/5">
-                        Team up a paws-itively adorable adventure!
+                <div class="right w-5/6 md:w-1/2 text-center mx-auto mt-10 md:mt-0" id="explore">
+                    <h2 class="font-black text-white text-5xl md:text-6xl py-8 drop-shadow-lg" id="features-title">
+                        Available Now
+                    </h2>
+                    <p class="font-bold text-white text-2xl mx-auto py-10 w-4/5 drop-shadow-md animate-pulse">
+                        ¡Únete a una aventura paws-itivamente adorable!
                     </p>
-                    <p class="text-white mx-auto">
-                        Bowser is up to his old tricks again and only Mario and his friends can save the day! Use power-ups like the Super Bell, which grants catlike abilities like climbing and scratching, to overcome Bowser and his minions.
+                    <p class="text-white mx-auto w-4/5 leading-relaxed text-lg">
+                        ¡Bowser está haciendo de las suyas otra vez y solo Mario y sus amigos pueden salvar el día! Usa power-ups como la Super Bell, que otorga habilidades felinas como trepar y arañar, para vencer a Bowser y sus secuaces.
                     </p>
 
-                    <div class="card text-center bg-white 2xl:w-5/6 mx-auto mt-16 rounded-2xl overflow-hidden xl:w-4/5">
-                        <div class="cover bg-black">
-                            <video src="videos/video02.mp4" autoplay loop muted></video>
+                    <article class="card text-center bg-white 2xl:w-5/6 mx-auto mt-16 rounded-2xl overflow-hidden xl:w-4/5 shadow-2xl hover:shadow-yellow-400/30 transition-all duration-300 hover:scale-105 transform">
+                        <div class="cover bg-black relative overflow-hidden group">
+                            <video src="videos/video02.mp4" autoplay loop muted playsinline loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" aria-label="Video de exploración del castillo"></video>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
-                        <div class="content bg-wave-pattern bg-repeat-x relative -top-3">
-                            <h3 class="font-black text-4xl py-10">Explore</h3>
-                            <p class="text-xl mx-6">
-                                Prowl through the castle and find Bowser!
+                        <div class="content bg-wave-pattern bg-repeat-x relative -top-3" aria-hidden="true">
+                            <h3 class="font-black text-4xl py-10 text-gray-800">Explore</h3>
+                            <p class="text-xl mx-6 mb-4 text-gray-700">
+                                ¡Explora el castillo y encuentra a Bowser!
                             </p>
-                            <a href="#" class="arrow group">
+                            <a href="#explore" class="arrow group inline-flex items-center gap-2 text-red-500 font-bold hover:text-red-700 transition-colors pb-6" aria-label="Explorar más sobre el modo exploración">
                                 Take a look!
-                                <span class="arrow-group"></span>
+                                <span class="arrow-group inline-block transition-transform group-hover:translate-x-2">→</span>
                             </a>
                         </div>
-                        <div class="dots flex justify-between p-4">
-                            <div class="dot"></div>
-                            <div class="dot"></div>
+                        <div class="dots flex justify-center gap-2 p-4" role="presentation" aria-hidden="true">
+                            <div class="dot w-3 h-3 bg-gray-300 rounded-full"></div>
+                            <div class="dot w-3 h-3 bg-blue-500 rounded-full"></div>
                         </div>
-                    </div>
-                    
+                    </article>
                 </div>
             </div>
 
-            <div class="footer text-center flex justify-center gap-9 pt-10">
-                <img src="img/coin.gif" alt="coin" class="coin">
-                <img src="img/coin.gif" alt="coin" class="coin">
-                <img src="img/coin.gif" alt="coin" class="coin">
-                <img src="img/coin.gif" alt="coin" class="coin coin-less">
-                <img src="img/coin.gif" alt="coin" class="coin coin-less">
-                <img src="img/coin.gif" alt="coin" class="coin coin-less">
+            <div class="footer text-center flex justify-center gap-9 pt-10 flex-wrap" role="presentation" aria-label="Monedas decorativas">
+                <img src="img/coin.gif" alt="Moneda de oro de Mario girando" class="coin w-16 h-16 md:w-20 md:h-20 animate-bounce" loading="lazy" style="animation-delay: 0s;">
+                <img src="img/coin.gif" alt="Moneda de oro de Mario girando" class="coin w-16 h-16 md:w-20 md:h-20 animate-bounce" loading="lazy" style="animation-delay: 0.1s;">
+                <img src="img/coin.gif" alt="Moneda de oro de Mario girando" class="coin w-16 h-16 md:w-20 md:h-20 animate-bounce" loading="lazy" style="animation-delay: 0.2s;">
+                <img src="img/coin.gif" alt="Moneda de oro de Mario girando" class="coin coin-less w-16 h-16 md:w-20 md:h-20 hidden sm:block animate-bounce" loading="lazy" style="animation-delay: 0.3s;">
+                <img src="img/coin.gif" alt="Moneda de oro de Mario girando" class="coin coin-less w-16 h-16 md:w-20 md:h-20 hidden sm:block animate-bounce" loading="lazy" style="animation-delay: 0.4s;">
+                <img src="img/coin.gif" alt="Moneda de oro de Mario girando" class="coin coin-less w-16 h-16 md:w-20 md:h-20 hidden md:block animate-bounce" loading="lazy" style="animation-delay: 0.5s;">
             </div>
         </section>
 
-        <section class="bg-yellow-dots">
-            <div class="bg-wave-pink bg-repeat-x h-6 relative -top-4"></div>
-            <div class="xsm:w-full sm:container w-2/3 mx-auto md:flex justify-center items-center py-6">
+        <section class="bg-yellow-dots" id="bowser-fury" aria-labelledby="cat-transformation-title">
+            <div class="bg-wave-pink bg-repeat-x h-6 relative -top-4" aria-hidden="true"></div>
+            <div class="xsm:w-full sm:container w-2/3 mx-auto md:flex justify-center items-center py-6 gap-8">
                 <div class="left xl:w-1/3 lg:w-1/2 p-5">
-                    <h3 class="text-yellow-900 font-black xsm:text-3xl sm:text-4xl text-center">
-                        Cat<br>Transformation<br>Center<br>
+                    <h3 id="cat-transformation-title" class="text-yellow-900 font-black xsm:text-3xl sm:text-4xl lg:text-5xl text-center leading-tight drop-shadow-md">
+                        Cat<br>Transformation<br>Center
                     </h3>
-                    <p class="y-4 text-xl text-center">
-                        We're not kitten-transform into a cat-tastic new you!
+                    <p class="py-4 text-xl text-center text-yellow-800 leading-relaxed">
+                        ¡No estamos bromeando! ¡Transfórmate en una nueva versión felina y fantástica!
                     </p>
                     <p class="text-center">
-                        <a href="#" class="arrow group">
-                            Meow! 
-                            <span class="arrow-group"></span>
+                        <a href="#cat-power" class="arrow group inline-flex items-center justify-center gap-2 text-yellow-900 font-bold text-lg hover:text-yellow-700 transition-all transform hover:scale-110" aria-label="Descubrir poder felino">
+                            Meow!
+                            <span class="arrow-group inline-block transition-transform group-hover:translate-x-2 text-2xl">🐱</span>
                         </a>
                     </p>
                 </div>
-                <div class="right xl:2/3 lg:w-1/2">
-                    <img src="img/activity_img3.png" class="md:w-full" alt="">
+                <div class="right xl:w-2/3 lg:w-1/2 p-5">
+                    <img src="img/activity_img3.png" class="md:w-full max-w-md mx-auto hover:scale-105 transition-transform duration-300 drop-shadow-2xl" alt="Mario con traje de gato mostrando habilidades felinas y poder de transformación" loading="lazy">
                 </div>
             </div>
         </section>
         
-        <section class="bg-black">
-            <div class="bg-wave-pattern bg-repeat-x h-6 relative -top-4"></div>
+        <footer class="bg-black" id="buy">
+            <div class="bg-wave-pattern bg-repeat-x h-6 relative -top-4" aria-hidden="true"></div>
 
-            <div class="container mx-auto text-center py-10 w-2/3">
-                <div class="pb-5">
-                    <a href="#" class="arrow group">
-                        Customer Support 
-                        <span class="arrow-group"></span>
+            <div class="container mx-auto text-center py-10 w-full md:w-2/3 px-4">
+                <div class="pb-8">
+                    <a href="#customer-support" class="inline-flex items-center gap-3 px-8 py-3 bg-red-500 text-white font-bold rounded-full hover:bg-white hover:text-black transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-red-500/50" aria-label="Contactar soporte al cliente">
+                        Customer Support
+                        <span class="inline-block transition-transform group-hover:translate-x-1">→</span>
                     </a>
                 </div>
-                <div class="text-white">
-                   <p class="py-2">
-                    Additional games, systems and/or accessories may be required for multiplayer mode
+                <div class="text-white text-sm md:text-base space-y-4 leading-relaxed">
+                   <p class="py-2 text-gray-300">
+                    <strong>*</strong> Se pueden requerir juegos, sistemas y/o accesorios adicionales para el modo multijugador.
                    </p>
-                   <p class="py-2">
-                    Nintendo Switch Online membership (sold separately) and Nintendo Account required for online features. Not available in all countries. Internet access required for online features. A Nintendo Account is required to receive and redeem My Nintendo points. Terms apply. nintendo.com/switch-online.
+                   <p class="py-2 text-gray-300">
+                    <strong>**</strong> Se requiere membresía de Nintendo Switch Online (se vende por separado) y cuenta de Nintendo para funciones en línea. No disponible en todos los países. Se requiere acceso a Internet para funciones en línea. Se necesita una cuenta Nintendo para recibir y canjear puntos My Nintendo. Se aplican términos. <a href="https://www.nintendo.com/switch-online" class="text-red-400 hover:text-red-300 underline transition-colors" target="_blank" rel="noopener noreferrer">nintendo.com/switch-online</a>
                    </p>
-                   <p class="py-2">
-                    Game, systems, some accessories and amiibo sold separately. Visit amiibo.com for details on amiibo functionality.
+                   <p class="py-2 text-gray-300">
+                    Juego, sistemas, algunos accesorios y amiibo se venden por separado. Visita <a href="https://www.amiibo.com" class="text-red-400 hover:text-red-300 underline transition-colors" target="_blank" rel="noopener noreferrer">amiibo.com</a> para detalles sobre la funcionalidad de amiibo.
                    </p>
-                   <p class="py-2">
-                    Nintendo Switch Lite plays all games that support handheld mode.
+                   <p class="py-2 text-gray-300">
+                    Nintendo Switch Lite reproduce todos los juegos que soportan el modo portátil.
                    </p>
-                   <p>
-                    ©2013-2021 Nintendo. Super Mario and Nintendo Switch are trademarks of Nintendo.
+                   <p class="py-4 text-gray-400 border-t border-gray-700 mt-6 pt-6">
+                    ©2013-2025 Nintendo. Super Mario y Nintendo Switch son marcas registradas de Nintendo.
                    </p>
                  </div>
             </div>
-        </section>
+        </footer>
     </div>
 
     <script>
+        // Mobile menu toggle with accessibility
         const menuButton = document.querySelector('#mobile-menu');
+        const mobileMenu = document.querySelector('.mobile-links');
 
-        menuButton.addEventListener('click', e => {
-            const menu = document.querySelector('.mobile-links');
-            menu.classList.toggle('hidden');
+        if (menuButton && mobileMenu) {
+            menuButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+
+                // Toggle menu visibility
+                mobileMenu.classList.toggle('hidden');
+
+                // Update aria-expanded attribute
+                menuButton.setAttribute('aria-expanded', !isExpanded);
+
+                // Add smooth animation
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.style.animation = 'slideDown 0.3s ease-out';
+                }
+            });
+
+            // Close menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuButton.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!menuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                    menuButton.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
+
+        // Add scroll-based navbar background
+        const navbar = document.querySelector('nav');
+        if (navbar) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('bg-opacity-95', 'backdrop-blur-sm');
+                } else {
+                    navbar.classList.remove('bg-opacity-95', 'backdrop-blur-sm');
+                }
+            });
+        }
+
+        // Lazy load videos when they come into view
+        const videos = document.querySelectorAll('video[loading="lazy"]');
+        if ('IntersectionObserver' in window) {
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const video = entry.target;
+                        if (!video.src) {
+                            video.src = video.getAttribute('data-src');
+                        }
+                        video.play();
+                        videoObserver.unobserve(video);
+                    }
+                });
+            }, { threshold: 0.25 });
+
+            videos.forEach(video => videoObserver.observe(video));
+        }
+
+        // Add CSS animation for mobile menu
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .sr-only {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border-width: 0;
+            }
+
+            .focus\\:not-sr-only:focus {
+                position: static;
+                width: auto;
+                height: auto;
+                padding: 1rem;
+                margin: 0;
+                overflow: visible;
+                clip: auto;
+                white-space: normal;
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
